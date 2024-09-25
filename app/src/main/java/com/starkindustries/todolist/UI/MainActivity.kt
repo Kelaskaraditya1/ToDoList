@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.starkindustries.todolist.Adapter.TasksAdapter
 import com.starkindustries.todolist.Data.Task
 import com.starkindustries.todolist.R
 import com.starkindustries.todolist.databinding.ActivityMainBinding
@@ -36,7 +38,8 @@ class MainActivity : AppCompatActivity() {
         taskList.add(Task("Meet","Attend Meet"))
         taskList.add(Task("Meet","Attend Meet"))
         taskList.add(Task("Meet","Attend Meet"))
-        binding.
+        binding.recyclerview.layoutManager=LinearLayoutManager(this)
+        binding.recyclerview.adapter= TasksAdapter(this,taskList)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
